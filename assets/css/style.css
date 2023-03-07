@@ -1,9 +1,11 @@
+/* Style nav bar title */
 #page-title {
    font-family: Rampart One;
    font-size: 40px;
    color: white;
 }
 
+/* Change color of icon */
 nav i {
     color: white;
 }
