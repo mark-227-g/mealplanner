@@ -9,3 +9,53 @@
 nav i {
     color: white;
 }
+
+#mealList{
+    background-color: lightblue;
+    padding:10px;
+}
+
+.meal 
+{
+    background-color:green;
+    color:black;
+    border-top: 1px dashed black;
+    border-radius: 15px; 
+    width:100%;
+}
+
+.mealBtn 
+{
+    padding: 0px;
+    border-radius: 20px;
+    background-color: lightblue;
+    color: white;
+    height:100%;
+   
+  }
+  
+  .mealBtn i:hover {
+    opacity:-15;  
+}
+
+.mealTxt {
+    font-size:48;
+    color:blue;
+    height:100%;
+    text-align:center;
+    background-color: white;
+}
+.mealPhoto {
+    border-radius: 20px;
+    width:100%;
+    height:auto;
+    display: block;
+    margin: auto;
+    object-fit: cover;
+    
+ 
+    object-fit:cover;
+  }
+  .mealPhoto:hover {
+    opacity:0.5;  
+}
