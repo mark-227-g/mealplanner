@@ -12,9 +12,11 @@ function ingredientSearch(event) {
 
 function retrieveRecipes(url) {
     fetch(url).then(function (response) {
+        console.log("json "+response.json)
         return response.json();
     }).then(function(data) {
-        console.log(data.meals[0]['strMeal'])
+        console.log("data "+data.meals[0]['strMeal'])
+        //return response.json()
     })
     ;
 }
@@ -39,25 +41,30 @@ function loadMealList(url)
     var mealItemEl;
     var btnEl;
 
-    var mealList = retrieveRecipes(url);
+    fetch(url).then(function (response) {
+        console.log("json "+response.json)
+        return response.json();
+    }).then(function(data) {
+       
+        console.log("data "+data.meals[0]['strMeal'])
+    var meals = data.meals;
 
-    $.each(mealList, function( key, value ) 
+    for(var i=0;i<meals.length;i++) 
     {
       document.getElementById("#mealList");
       mealItemEl = document.createElement("div");
       mealItemEl.innerHTML='<div class="meal row align-items-center">'+
-      '<p class="col-md-8 mealTxt">' + value.strMeal +'</p>'+
-      '<button id="btn-'+key+'" class="mealBtn col-md-4" value="'+value.idMeal+'">'+
-      '<img class="mealPhoto"src="'+value.strMealThumb+'" />'
+      '<p class="col-md-8 mealTxt">' + meals[i].strMeal +'</p>'+
+      '<button id="btn-'+i+'" class="mealBtn col-md-4" value="'+meals[i].idMeal+'">'+
+      '<img class="mealPhoto"src="'+meals[i].strMealThumb+'" />'
       '</button>'+
       '</div>'
       mealListEl.appendChild(mealItemEl);
-      btnEl=document.getElementById("btn-"+key);
+      btnEl=document.getElementById("btn-"+i);
       btnEl.addEventListener("click",mealBtnClick);
-    });
+    };
+})
 }
-
-// $(document).ready(loadMealList());
 
 
 var ingredientListEl = document.getElementById('ingredient-list')
