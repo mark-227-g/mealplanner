@@ -87,3 +87,5 @@ function outputIngredientList() {
 })};
 
 // TO DO: display additional photos to #add-info in html using user input and google search api
+// GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
+
