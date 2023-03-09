@@ -85,3 +85,5 @@ function outputIngredientList() {
         }
     };
 })};
+
+// TO DO: display additional photos to #add-info in html using user input and google search api
