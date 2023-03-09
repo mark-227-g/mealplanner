@@ -36,6 +36,9 @@ function loadMealList()
     });
 }
 
+$(document).ready(loadMealList());
+
+
 var ingredientListEl = document.getElementById('ingredient-list')
 var selectedMeal = "52796";
 
