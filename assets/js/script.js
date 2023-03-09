@@ -12,9 +12,11 @@ function ingredientSearch(event) {
 
 function retrieveRecipes(url) {
     fetch(url).then(function (response) {
-        console.log(response)
         return response.json();
-    });
+    }).then(function(data) {
+        console.log(data.meals[0]['strMeal'])
+    })
+    ;
 }
 
 
@@ -37,9 +39,9 @@ function loadMealList(url)
     var mealItemEl;
     var btnEl;
 
-    var mealList = JSON.parse(retrieveRecipes(url));
+    var mealList = retrieveRecipes(url);
 
-    $.each( mealList.meals, function( key, value ) 
+    $.each(mealList, function( key, value ) 
     {
       document.getElementById("#mealList");
       mealItemEl = document.createElement("div");
