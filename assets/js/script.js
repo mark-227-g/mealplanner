@@ -124,11 +124,13 @@ function outputAdditionalInfo() {
       .then(function(searchData) {
       console.log(searchData.items[1].title);
       for (var i = 0; i <=5; i++) {
-          var userInput = document.getElementById("userInput").value; ;
           var displayImages = document.getElementById('add-info');
           console.log(searchData.items[0].title);
         //   append search results to page
-          displayImages.append();
+        var results ='';
+          results.innerHTML= '<div class="gcse-searchresults" data-defaultToImageSearch="true"></div>'
+          displayImages.append(results.innerHTML);
+
       }
       })
 }
