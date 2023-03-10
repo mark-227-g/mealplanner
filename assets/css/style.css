@@ -1,3 +1,22 @@
+/************************************** 
+Default page style  
+**************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+html {
+    height: 100%;
+}
+  
+body {
+    min-height: 100%;
+    line-height: 1;
+    font-family: sans-serif;
+}
+
 /* Style nav bar title */
 #page-title {
    font-family: Rampart One;
@@ -13,9 +32,9 @@ nav i {
 
 #mealList{
     overflow:scroll;
-height:100vh;
+    height:80vh;
     background-color: lightgray;
-    padding:10px;
+    padding:0px;
 }
 
 .meal 
@@ -31,10 +50,9 @@ height:100vh;
 {
     padding: 0px;
     border-radius: 20px;
-
     color: white;
     height:100%;   
-  }
+}
   
   .mealBtn i:hover {
     opacity:-15;  
@@ -51,9 +69,19 @@ height:100vh;
     width:100%;
     height:auto;
     display: block;
-    margin: auto;
     object-fit: cover;
   }
   .mealPhoto:hover {
     opacity:0.5;  
+}
+
+#ingredient-list {
+    height:80vh;
+    overflow:scroll;
+}
+#mealDbPhoto {
+    width:100%;
+    height:auto;
+    display: block;
+    object-fit: cover;
 }
