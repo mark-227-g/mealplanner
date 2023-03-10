@@ -10,14 +10,17 @@ nav i {
     color: white;
 }
 
+
 #mealList{
-    background-color: lightblue;
+    overflow:scroll;
+height:100vh;
+    background-color: lightgray;
     padding:10px;
 }
 
 .meal 
 {
-    background-color:green;
+    background-color:lightblue;
     color:black;
     border-top: 1px dashed black;
     border-radius: 15px; 
@@ -28,10 +31,9 @@ nav i {
 {
     padding: 0px;
     border-radius: 20px;
-    background-color: lightblue;
+
     color: white;
-    height:100%;
-   
+    height:100%;   
   }
   
   .mealBtn i:hover {
@@ -39,11 +41,10 @@ nav i {
 }
 
 .mealTxt {
-    font-size:48;
-    color:blue;
+    font-size:16;
+    color:black;
     height:100%;
     text-align:center;
-    background-color: white;
 }
 .mealPhoto {
     border-radius: 20px;
@@ -52,9 +53,6 @@ nav i {
     display: block;
     margin: auto;
     object-fit: cover;
-    
- 
-    object-fit:cover;
   }
   .mealPhoto:hover {
     opacity:0.5;  

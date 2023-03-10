@@ -26,7 +26,7 @@ function retrieveRecipes(url) {
 Event handler for mealBtnClick
 **************************************/
 function mealBtnClick(event) {
-  alert(event.currentTarget.value);
+  showIngredientList(event.currentTarget.value);
 }
 
 /************************************** 
@@ -37,7 +37,10 @@ function loadMealList(url) {
   var mealListEl = document.querySelector("#mealList");
   var mealItemEl;
   var btnEl;
-
+  while (mealListEl.hasChildNodes())
+  { 
+      mealListEl.removeChild(mealListEl.firstChild);
+  };
   fetch(url).then(function (response) {
       console.log("json "+response.json)
       return response.json();
@@ -61,18 +64,25 @@ function loadMealList(url) {
   })
 }
 
+
 var ingredientListEl = document.getElementById("ingredient-list");
 var recipeInstructionsEl = document.getElementById("recipeInstructions");
 var mealDbPhotoEl = document.getElementById("mealDbPhoto");
 var ingredientListEl = document.getElementById('ingredient-list')
 
-var selectedMeal = "52796";
-
+//var selectedMeal = "52796";
+function showIngredientList(mealId)
+{
 // url to retrieve the meal ingredients, instructions, photo
 var ingredientsUrl =
-  "https://themealdb.com/api/json/v1/1/lookup.php?i=" + selectedMeal;
-
+  "https://themealdb.com/api/json/v1/1/lookup.php?i=" + mealId; //selectedMeal;
+  outputIngredientList(ingredientsUrl);
+};
 function outputIngredientList(getIngredientList) {
+  while (ingredientListEl.hasChildNodes())
+  { 
+    ingredientListEl.removeChild(ingredientListEl.firstChild);
+  };
   fetch(getIngredientList)
     .then(function (response) {
       return response.json();
@@ -100,4 +110,4 @@ function outputIngredientList(getIngredientList) {
     });
 }
 
-outputIngredientList(ingredientsUrl);
+
