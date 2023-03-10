@@ -27,6 +27,7 @@ Event handler for mealBtnClick
 **************************************/
 function mealBtnClick(event) {
   showIngredientList(event.currentTarget.value);
+  outputAdditionalInfo();
 }
 
 /************************************** 
@@ -112,22 +113,24 @@ function outputIngredientList(getIngredientList) {
 
 // TO DO: display additional photos to #add-info in html using user input and google search api
 // GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
+var selectedMeal = "lasagna";
 
 function outputAdditionalInfo() {
-    fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=lasagna")
+    fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=" + selectedMeal + "&searchType=image&num=4")
       .then(function (response) {
       //   console.log(response.json);
         return response.json();
       })
       .then(function(searchData) {
-      console.log(searchData.items[0].title);
+      console.log(searchData.items[1].title);
       for (var i = 0; i <=5; i++) {
-          var userInput = document.getElementById("userInput").value;
+          var userInput = document.getElementById("userInput").value; ;
           var displayImages = document.getElementById('add-info');
-          console.log(searchData.items[11].cse_images.src)
-          displayImages.append()
+          console.log(searchData.items[0].title);
+        //   append search results to page
+          displayImages.append();
       }
       })
-  }
-  // items > pagemap > cse_images > src
+}
+// items > pagemap > cse_images > src
 
