@@ -2,6 +2,7 @@ var ingredientSearchButton = document.getElementById("ingredientSearchBtn");
 ingredientSearchButton.addEventListener("click", ingredientSearch);
 
 function ingredientSearch(event) {
+  document.getElementById("startMessage").style.display = "none";
   var userInput = document.getElementById("userInput").value;
   event.preventDefault();
   console.log(userInput);
@@ -18,7 +19,7 @@ function retrieveRecipes(url) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data.meals[0]["strMeal"]);
+      console.log(data.meals[0].strMeal);
     });
 }
 
@@ -94,7 +95,7 @@ function outputIngredientList(getIngredientList) {
       selectedMealTitle = recipeData.meals[0].strMeal;
       for (var i = 1; i <= 20; i++) {
         //   Check if ingredients are empty before adding to list
-        if (recipeData.meals[0]["strIngredient" + i] != "") {
+        if (recipeData.meals[0]["strIngredient" + i] != "" && recipeData.meals[0]["strIngredient" + i] != null) {
           var currentIngredient =
             recipeData.meals[0]["strMeasure" + i] +
             " " +

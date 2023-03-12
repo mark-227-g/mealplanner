@@ -38,16 +38,18 @@
         </div>
       </nav>
     </header>
-
     <!-- main section -->
     <main>
       <div class="row">
+      <div class="alert alert-warning alert-dismissible text-center" role="alert" id="startMessage">
+        Enter an ingredient and search to get started!
+      </div>
       <!-- mealList: list of meals returned by API  -->
       <div id="mealList" class="col-sm-3 col-md-3 col-lg-3">
       </div>
       <!-- mealDbPhoto: meal photo -->
       <div class="col-sm-3 col-md-3 col-lg-3">
-        <img id="mealDbPhoto" alt="img placeholder"/>
+        <img id="mealDbPhoto"/>
       </div>
       <!-- ingredient list -->
       <div class="col-sm-6 col-md-6 col-lg-6">
@@ -57,7 +59,7 @@
     <div class="row">
       <!-- recipe Instructions -->
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <p id="recipeInstructions">This is a recipe</p>
+        <p id="recipeInstructions" class="m-3 p-2"></p>
       </div>
     </div>
     <div class="row" id="add-info">
