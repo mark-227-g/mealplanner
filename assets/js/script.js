@@ -70,7 +70,8 @@ var recipeInstructionsEl = document.getElementById("recipeInstructions");
 var mealDbPhotoEl = document.getElementById("mealDbPhoto");
 var ingredientListEl = document.getElementById('ingredient-list')
 
-//var selectedMeal = "52796";
+var selectedMealID = '';
+var selectedMealTitle = '';
 function showIngredientList(mealId)
 {
 // url to retrieve the meal ingredients, instructions, photo
@@ -89,6 +90,8 @@ function outputIngredientList(getIngredientList) {
     })
     .then(function (recipeData) {
       //   Build out list of ingredients on page
+      selectedMealId = recipeData.meals[0].idMeal;
+      selectedMealTitle = recipeData.meals[0].strMeal;
       for (var i = 1; i <= 20; i++) {
         //   Check if ingredients are empty before adding to list
         if (recipeData.meals[0]["strIngredient" + i] != "") {
@@ -107,7 +110,32 @@ function outputIngredientList(getIngredientList) {
 
       //   Display mealdb photo on page
       mealDbPhotoEl.setAttribute("src", recipeData.meals[0].strMealThumb);
+      outputAdditionalInfo();
     });
 }
 
+// TO DO: display additional photos to #add-info in html using user input and google search api
+// GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
+
+function outputAdditionalInfo() {
+    fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=" + selectedMealTitle + "&searchType=image&num=5")
+      .then(function (response) {
+      //   console.log(response.json);
+        return response.json();
+      })
+      .then(function(searchData) {
+      console.log(searchData.items[0].link);
+      for (var i = 0; i < 5; i++) {
+          var displayImages = document.getElementById('add-info');
+          console.log(searchData.items[i].link);
+        //   append search results to page
+        var results ='';
+          var searchImage = document.createElement("img");
+          searchImage.setAttribute("src", searchData.items[i].link);
+          searchImage.setAttribute("class", "google-image");
+          displayImages.append(searchImage);
+
+      }
+    })
+}
 

@@ -85,3 +85,9 @@ nav i {
     display: block;
     object-fit: cover;
 }
+
+.google-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
