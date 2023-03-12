@@ -118,7 +118,7 @@ function outputIngredientList(getIngredientList) {
 // GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
 
 function outputAdditionalInfo() {
-    fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=" + selectedMealTitle + "&searchType=image&num=4&imgSize=icon&safe=active&filter=1&start=4")
+    fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=" + selectedMealTitle + "&searchType=image&num=4&imgSize=medium&safe=active&filter=1")
       .then(function (response) {
       //   console.log(response.json);
         return response.json();

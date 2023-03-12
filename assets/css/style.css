@@ -1,6 +1,7 @@
 /************************************** 
 Default page style  
 **************************************/
+
 * {
     margin: 0;
     padding: 0;
@@ -21,25 +22,31 @@ body {
 #page-title {
    font-family: Rampart One;
    font-size: 40px;
-   color: white;
+   color: goldenrod;
 }
 
 /* Change color of icon */
 nav i {
-    color: white;
+    color: brown;
 }
 
+nav {
+    background-color: lightgoldenrodyellow;
+}
+
+.nav-btn {
+    background-color:salmon;
+}
 
 #mealList{
     overflow:scroll;
     height:80vh;
-    background-color: lightgray;
     padding:0px;
 }
 
 .meal 
 {
-    background-color:lightblue;
+    background-color: orange;
     color:black;
     border-top: 1px dashed black;
     border-radius: 15px; 
@@ -92,6 +99,6 @@ nav i {
     display: block;
 }
 
-#add-info {
- 
+.list-group-item {
+    background-color: orangered;
 }
