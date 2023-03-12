@@ -119,30 +119,30 @@ function outputIngredientList(getIngredientList) {
 
 // GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
 
-// function outputAdditionalInfo() {
-//     fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=" + selectedMealTitle + "&searchType=image&num=4&imgSize=medium&safe=active&filter=1")
-//       .then(function (response) {
-//       //   console.log(response.json);
-//         return response.json();
-//       })
-//       .then(function(searchData) {
-//       console.log(searchData.items[0].link);
-//       var displayImages = document.getElementById('add-info');
-//       while (displayImages.hasChildNodes())
-//       { 
-//           displayImages.removeChild(displayImages.firstChild);
-//       };
-//       for (var i = 0; i < 4; i++) {
-//           console.log(searchData.items[i].link);
-//         //   append search results to page
-//         var results ='';
-//           var searchImage = document.createElement("img");
-//           searchImage.setAttribute("src", searchData.items[i].link);
-//           searchImage.setAttribute("class", "google-image");
-//           searchImage.setAttribute("class", "col-sm-3 col-md-3 col-lg-3");
-//           displayImages.append(searchImage);
+function outputAdditionalInfo() {
+    fetch("https://www.googleapis.com/customsearch/v1?key=AIzaSyA7T4-wlgKuAXG5Hn61kPaQyePZNQiUXig&cx=4173e26fe17eb4ce5&q=" + selectedMealTitle + "&searchType=image&num=4&imgSize=medium&safe=active&filter=1")
+      .then(function (response) {
+      //   console.log(response.json);
+        return response.json();
+      })
+      .then(function(searchData) {
+      console.log(searchData.items[0].link);
+      var displayImages = document.getElementById('add-info');
+      while (displayImages.hasChildNodes())
+      { 
+          displayImages.removeChild(displayImages.firstChild);
+      };
+      for (var i = 0; i < 4; i++) {
+          console.log(searchData.items[i].link);
+        //   append search results to page
+        var results ='';
+          var searchImage = document.createElement("img");
+          searchImage.setAttribute("src", searchData.items[i].link);
+          searchImage.setAttribute("class", "google-image");
+          searchImage.setAttribute("class", "col-sm-3 col-md-3 col-lg-3");
+          displayImages.append(searchImage);
 
-//       }
-//     })
-// }
+      }
+    })
+}
 
