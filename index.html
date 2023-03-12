@@ -18,7 +18,7 @@
   <body>
     <!-- Navbar-->
     <header>
-      <nav class="navbar navbar-light bg-primary">
+      <nav class="navbar">
         <div class="container-fluid">
           <!-- Logo -->
           <i class="fa-solid fa-utensils fa-2xl"></i>
@@ -33,14 +33,15 @@
               aria-label="Search"
               id="userInput"
             />
-            <button class="btn btn-success" id="ingredientSearchBtn">Search</button>
+            <button class="btn nav-btn" id="ingredientSearchBtn">Search</button>
           </form>
         </div>
       </nav>
     </header>
 
     <!-- main section -->
-    <main class="row">
+    <main>
+      <div class="row">
       <!-- mealList: list of meals returned by API  -->
       <div id="mealList" class="col-sm-3 col-md-3 col-lg-3">
       </div>
@@ -52,14 +53,16 @@
       <div class="col-sm-6 col-md-6 col-lg-6">
         <ul class="list-group" id="ingredient-list"></ul>
       </div>
+    </div>
+    <div class="row">
       <!-- recipe Instructions -->
-      <div class="col-sm-12 col-md-12 col-lg-12 row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
         <p id="recipeInstructions">This is a recipe</p>
       </div>
+    </div>
+    <div class="row" id="add-info">
       <!-- Google API search for images -->
-      <div class="col-sm-2 col-md-2 col-lg-2 row">
-        <div id="add-info" class="gcse-searchresults" data-defaultToImageSearch="true"></div>
-      </div>
+    </div>
     </main>
 
     <!-- Included Scripts -->
