@@ -87,7 +87,11 @@ nav i {
 }
 
 .google-image {
-    width: 100%;
+    width: auto;
     height: auto;
     display: block;
+}
+
+#add-info {
+ 
 }
