@@ -111,6 +111,7 @@ function outputIngredientList(getIngredientList) {
 
       //   Display mealdb photo on page
       mealDbPhotoEl.setAttribute("src", recipeData.meals[0].strMealThumb);
+      document.getElementById("mealDbPhoto").style.display = "block";
       outputAdditionalInfo();
     });
 }
