@@ -16,13 +16,14 @@ body {
     min-height: 100%;
     line-height: 1;
     font-family: sans-serif;
+    background-color: lightgoldenrodyellow;
 }
 
 /* Style nav bar title */
 #page-title {
    font-family: Rampart One;
    font-size: 40px;
-   color: goldenrod;
+   color: lightgoldenrodyellow;
 }
 
 /* Change color of icon */
@@ -31,11 +32,12 @@ nav i {
 }
 
 nav {
-    background-color: lightgoldenrodyellow;
+    background-color: goldenrod;
 }
 
 .nav-btn {
-    background-color:salmon;
+    background-color:darkred;
+    color: white;
 }
 
 #mealList{
@@ -100,16 +102,19 @@ nav {
 }
 
 .list-group-item {
-    background-color: orangered;
+    background-color: lightsalmon;
 }
 
 .recipe {
-    background-color:lightsalmon;
-    padding: 3rem;
+    background-color:rgba(139, 0, 0, 0.481);
+    padding: 2rem;
     margin: 2rem;
     color: black;
     font-size: 24px;
-    border: 4px double goldenrod;
+    border: 6px double goldenrod;
     border-radius: 2rem;
     font-style:italic;
+    line-height:2;
+    display:block;
+    font-family: Dosis;
 }
