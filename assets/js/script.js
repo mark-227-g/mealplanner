@@ -108,6 +108,7 @@ function outputIngredientList(getIngredientList) {
       }
       //   Output the Recipe Instructions on page
       recipeInstructionsEl.innerText = recipeData.meals[0]["strInstructions"];
+      recipeInstructionsEl.setAttribute("class","recipe")
 
       //   Display mealdb photo on page
       mealDbPhotoEl.setAttribute("src", recipeData.meals[0].strMealThumb);
@@ -116,7 +117,6 @@ function outputIngredientList(getIngredientList) {
     });
 }
 
-// TO DO: display additional photos to #add-info in html using user input and google search api
 // GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
 
 function outputAdditionalInfo() {
