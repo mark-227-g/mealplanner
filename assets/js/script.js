@@ -1,15 +1,13 @@
 var ingredientSearchButton = document.getElementById("ingredientSearchBtn");
 ingredientSearchButton.addEventListener("click", ingredientSearch);
 
+var savedMealId="";
+
 function ingredientSearch(event) {
   document.getElementById("startMessage").style.display = "none";
   var userInput = document.getElementById("userInput").value;
   event.preventDefault();
-  console.log(userInput);
-  var recipesUrl =
-    "https://themealdb.com/api/json/v1/1/filter.php?i=" + userInput;
-  console.log(recipesUrl);
-  loadMealList(recipesUrl);
+  loadMealList(userInput);
 }
 
 function retrieveRecipes(url) {
@@ -27,40 +25,48 @@ function retrieveRecipes(url) {
 Event handler for mealBtnClick
 **************************************/
 function mealBtnClick(event) {
-  showIngredientList(event.currentTarget.value);
+  savedMealId=event.currentTarget.value;
+  localStorage.setItem("mealid",savedMealId);
+  showIngredientList(savedMealId);
 }
 
 /************************************** 
 function loads the meal list
 parameter is the meal list json object
 **************************************/
-function loadMealList(url) {
+function loadMealList(mealName) {
   var mealListEl = document.querySelector("#mealList");
   var mealItemEl;
   var btnEl;
+  savedMealName=mealName;
+  localStorage.setItem("mealname",mealName);
+  var recipesUrl =
+    "https://themealdb.com/api/json/v1/1/filter.php?i=" + mealName;
   while (mealListEl.hasChildNodes())
   { 
       mealListEl.removeChild(mealListEl.firstChild);
   };
-  fetch(url).then(function (response) {
+  fetch(recipesUrl).then(function (response) {
       console.log("json "+response.json)
       return response.json();
   }).then(function(data) {
     var meals = data.meals;
-
-    for(var i=0;i<meals.length;i++) 
+    if(meals != null)
     {
-      document.getElementById("#mealList");
-      mealItemEl = document.createElement("div");
-      mealItemEl.innerHTML='<div class="meal row align-items-center">'+
-      '<p class="col-md-8 mealTxt">' + meals[i].strMeal +'</p>'+
-      '<button id="btn-'+i+'" class="mealBtn col-md-4" value="'+meals[i].idMeal+'">'+
-      '<img class="mealPhoto"src="'+meals[i].strMealThumb+'" />'
-      '</button>'+
-      '</div>'
-      mealListEl.appendChild(mealItemEl);
-      btnEl=document.getElementById("btn-"+i);
-      btnEl.addEventListener("click",mealBtnClick);
+      for(var i=0;i<meals.length;i++) 
+      {
+        document.getElementById("#mealList");
+        mealItemEl = document.createElement("div");
+        mealItemEl.innerHTML='<div class="meal row align-items-center">'+
+        '<p class="col-md-8 mealTxt">' + meals[i].strMeal +'</p>'+
+        '<button id="btn-'+i+'" class="mealBtn col-md-4" value="'+meals[i].idMeal+'">'+
+        '<img class="mealPhoto"src="'+meals[i].strMealThumb+'" />'
+        '</button>'+
+        '</div>'
+        mealListEl.appendChild(mealItemEl);
+        btnEl=document.getElementById("btn-"+i);
+        btnEl.addEventListener("click",mealBtnClick);
+      }
     };
   })
 }
@@ -146,3 +152,20 @@ function outputAdditionalInfo() {
     })
 }
 
+function main()
+{
+  if("mealname" in localStorage)
+  {
+    savedMealName=localStorage.getItem("mealname");
+    loadMealList(savedMealName);
+  }
+  if("mealid" in localStorage)
+  {
+    savedMealId=localStorage.getItem("mealid");
+    showIngredientList(savedMealId);
+  };
+}
+/************************************** 
+create calendar on load
+**************************************/
+$(document).ready(main);
