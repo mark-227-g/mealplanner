@@ -1,8 +1,21 @@
+/************************************** 
+global variables
+**************************************/
 var ingredientSearchButton = document.getElementById("ingredientSearchBtn");
 ingredientSearchButton.addEventListener("click", ingredientSearch);
 
 var savedMealId="";
+var ingredientListEl = document.getElementById("ingredient-list");
+var recipeInstructionsEl = document.getElementById("recipeInstructions");
+var mealDbPhotoEl = document.getElementById("mealDbPhoto");
+var ingredientListEl = document.getElementById('ingredient-list')
 
+var selectedMealID = '';
+var selectedMealTitle = '';
+
+/************************************** 
+Eventhandler for ingredientSearchButton
+**************************************/
 function ingredientSearch(event) {
   document.getElementById("startMessage").style.display = "none";
   var userInput = document.getElementById("userInput").value;
@@ -10,16 +23,6 @@ function ingredientSearch(event) {
   loadMealList(userInput);
 }
 
-function retrieveRecipes(url) {
-
-  fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data.meals[0].strMeal);
-    });
-}
 
 /************************************** 
 Event handler for mealBtnClick
@@ -31,8 +34,10 @@ function mealBtnClick(event) {
 }
 
 /************************************** 
-function loads the meal list
-parameter is the meal list json object
+function calls food API with the meal name.
+The api data is used to create the meal list.
+The meal list picture is a button to select
+the details for the meal
 **************************************/
 function loadMealList(mealName) {
   var mealListEl = document.querySelector("#mealList");
@@ -72,13 +77,11 @@ function loadMealList(mealName) {
 }
 
 
-var ingredientListEl = document.getElementById("ingredient-list");
-var recipeInstructionsEl = document.getElementById("recipeInstructions");
-var mealDbPhotoEl = document.getElementById("mealDbPhoto");
-var ingredientListEl = document.getElementById('ingredient-list')
-
-var selectedMealID = '';
-var selectedMealTitle = '';
+/************************************** 
+function uses the meal id to create
+the lookup url then calls the
+outputIngredientList
+**************************************/
 function showIngredientList(mealId)
 {
 // url to retrieve the meal ingredients, instructions, photo
@@ -86,6 +89,13 @@ var ingredientsUrl =
   "https://themealdb.com/api/json/v1/1/lookup.php?i=" + mealId; //selectedMeal;
   outputIngredientList(ingredientsUrl);
 };
+
+/************************************** 
+function calls food API with the mealid.
+The api data is used to show the meal
+details for ingredients, photo, and 
+instructions
+**************************************/
 function outputIngredientList(getIngredientList) {
   while (ingredientListEl.hasChildNodes())
   { 
@@ -123,6 +133,10 @@ function outputIngredientList(getIngredientList) {
     });
 }
 
+/************************************** 
+function calls Google customsearch
+to retrieve additional images of the meal
+**************************************/
 // GOOGLE JSON API DOCS: https://developers.google.com/custom-search/v1/overview
 
 function outputAdditionalInfo() {
@@ -147,11 +161,16 @@ function outputAdditionalInfo() {
           searchImage.setAttribute("class", "google-image");
           searchImage.setAttribute("class", "col-sm-3 col-md-3 col-lg-3");
           displayImages.append(searchImage);
-
       }
     })
 }
 
+/************************************** 
+function is called when the page loads
+to retrieve the last mealid and mealname
+These are used to load the last search
+and last meal viewed
+**************************************/
 function main()
 {
   if("mealname" in localStorage)
