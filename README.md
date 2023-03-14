@@ -78,8 +78,8 @@ There are no major disparities in the number of GitHub contributions between gro
 ### Screenshots:
 
 ### Technology used:
-* HTML5 semantic tags, 
-* CSS3, and 
+* HTML5 semantic tags 
+* CSS3 
 * JavaScript 
 * jQuery 
 * Bootstrap
